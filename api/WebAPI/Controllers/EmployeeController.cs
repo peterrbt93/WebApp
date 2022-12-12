@@ -245,12 +245,10 @@ namespace WebAPI.Controllers
                 var req = HttpContext.Request;
                 var postedFile = req.Form.Files[0];
                 string fileName = postedFile.FileName;
-                //string webRootPath = _webHostEnvironment.WebRootPath;
                 string contentRootPath = _webHostEnvironment.ContentRootPath;
 
                 string physicalPath = "";
-                //physicalPath = Path.Combine(webRootPath, "Photos"+fileName);
-                physicalPath = Path.Combine(contentRootPath , "Photos", fileName );
+                physicalPath = Path.Combine(contentRootPath , "Photos", fileName);
                 postedFile.CopyTo(new FileStream(physicalPath, FileMode.Create));
 
                 return Ok("File saved successfully: " + fileName);
