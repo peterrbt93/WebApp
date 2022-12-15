@@ -1,14 +1,15 @@
 <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Department Name</label>
-    <div class="col-sm-4">
+    <label class="col-sm-3 col-form-label pt-3">Department Name</label>
+    <div class="col-sm-9 mb-3 pt-3">
         <input type="text" class="form-control" [(ngModel)]="DepartmentName" 
         placeholder="Enter Department Name">
     </div>
-    <button (click)="addDepartment()" *ngIf="dep.DepartmentId==0" class="btn btn-primary col-sm-1" data-bs-dismiss="modal">
-        Add 
-    </button>
-    <button (click)="updateDepartment()" *ngIf="dep.DepartmentId!=0" class="btn btn-primary col-sm-1" data-bs-dismiss="modal">
-        Update
-    </button>
 </div>
+
+<button (click)="addDepartment()" *ngIf="dep.DepartmentId==0" class="btn btn-success col-sm-2" data-bs-dismiss="modal">
+    Add 
+</button>
+<button (click)="updateDepartment()" *ngIf="dep.DepartmentId!=0" class="btn btn-success col-sm-2" data-bs-dismiss="modal">
+    Update
+</button>
 

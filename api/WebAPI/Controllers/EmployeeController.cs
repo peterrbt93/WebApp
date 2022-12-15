@@ -115,8 +115,9 @@ namespace WebAPI.Controllers
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                
-                return Ok("Insert succesfull");
+
+                string JSONString = JsonConvert.SerializeObject("Insert successfull");
+                return Ok(JSONString);
 
             }
             catch (Exception e)
@@ -160,7 +161,8 @@ namespace WebAPI.Controllers
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-                return Ok("Change succesfull");
+                string JSONString = JsonConvert.SerializeObject("Change successfull");
+                return Ok(JSONString);
 
             }
             catch (Exception e)
@@ -192,7 +194,8 @@ namespace WebAPI.Controllers
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-                return Ok("Delete succesfull");
+                string JSONString = JsonConvert.SerializeObject("Delete successfull");
+                return Ok(JSONString);
 
             }
             catch (Exception e)
@@ -251,7 +254,8 @@ namespace WebAPI.Controllers
                 physicalPath = Path.Combine(contentRootPath , "Photos", fileName);
                 postedFile.CopyTo(new FileStream(physicalPath, FileMode.Create));
 
-                return Ok("File saved successfully: " + fileName);
+                string JSONString = JsonConvert.SerializeObject(fileName);
+                return Ok(JSONString);
             }
             catch (Exception e)
             {
