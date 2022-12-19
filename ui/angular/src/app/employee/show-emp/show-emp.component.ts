@@ -12,13 +12,15 @@ export class ShowEmpComponent {
     ) {}
 
   EmployeeList:any[]= [];
-  ModalTitle:string ="";
+  ModalTitle:string = "";
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
+  PhotoUrl:string = "";
 
 
   ngOnInit(): void {
     this.refreshEmpList();
+    this.PhotoUrl = this.service.PhotoUrl;
   }
 
   addClick(){
@@ -56,5 +58,28 @@ export class ShowEmpComponent {
     this.service.deleteEmployee(item.EmployeeId).subscribe(data=>{
       this.EmployeeList.splice(index, 1);
     });
+  }
+
+  showImage(item:any) {
+    const elem = document.getElementById('image'+item.EmployeeId);
+    console.log(elem);
+    const popImage = new Image();
+    popImage.src = this.service.PhotoUrl+item.PhotoFileName;
+    popImage.style.position = "absolute";
+    popImage.style.zIndex = "1";
+    popImage.style.width = "200px";
+    elem?.appendChild(popImage);
+  }
+
+  hideImage(item:any) {
+    const elem = document.getElementById('image'+item.EmployeeId);
+    while (elem && elem.childElementCount > 1) {
+      if (elem.lastChild) {
+        elem.removeChild(elem.lastChild);
+      }
+      else {
+        console.log("Error removing image");
+      }
+    }
   }
 }
